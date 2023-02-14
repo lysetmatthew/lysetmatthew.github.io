@@ -1,0 +1,16 @@
+#messages {
+    margin: 0 auto;
+    max-width: 350px;
+    background-image: url("/resources/bg.jpg");
+    background-size: contain;
+    background-attachment: fixed;
+}
+
+.Kate{
+    background-color: pink;
+    color: black;
+}
+
+.Matthew{
+    background-color: lightsteelblue;
+}

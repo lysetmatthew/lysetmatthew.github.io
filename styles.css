@@ -1,0 +1,74 @@
+*{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+html,
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#messages {
+    margin: 0 auto;
+    max-width: 350px;
+    background-color: #FFF;
+}
+
+#textHolder{
+    padding: 0 5% 20px;
+}
+
+.active a{
+    color: #602e5c;
+    font-weight: bold;
+    text-decoration: underline;
+    text-underline-offset: 14px;
+    text-decoration-color: #602e5c;
+}
+
+.Kate,
+.Matthew{
+    margin: 10px 0;
+    padding: 10px;
+    border-radius:10px;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.Kate{
+    background-color: #602e5c;
+    color: white;
+    margin-left: 10%;
+}
+
+.Matthew{
+    margin-right: 10%;
+    background-color: #f4f4f4;
+}
+
+.header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.header h1{
+    padding: 20px 0 10px;
+    margin: 0;
+}
+
+.header .links{
+    display: flex;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 2px solid #ccc;
+}
+
+.header .links div{
+    width: 50%;
+}
