@@ -9,10 +9,33 @@
 </head>
 <body>
     <script>
+        let date = null;
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+        var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
         fetch('resources/Messages.json').then((response) => response.json())
         .then((json) => {
             json.forEach(element => {
-                console.log(element)
+                let newDate = new Date(Date.parse(element["Time"]));               
+                if(!date || (newDate.getDate() != date.getDate())){
+                    console.log("New day");
+                    date = newDate;
+
+                    var dateEl = document.createElement("div");
+                    dateEl.classList.add("date");
+                    var dateText = document.createTextNode(
+                        newDate.getDate() + " " + monthNames[newDate.getMonth()] + " " + newDate.getFullYear()
+                    );
+                    var dayText = document.createTextNode("("+days[newDate.getDay()]+")");
+
+                    dateEl.appendChild(dateText);
+                    dateEl.appendChild(document.createElement("br"));
+                    dateEl.appendChild(dayText);
+                    
+                    document.getElementById("textHolder").insertBefore(dateEl, document.getElementById("message-placeholder"));
+                }
+
                 var newEl = document.createElement("div");
                 newEl.classList.add(element["Messager"]);
 

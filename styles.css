@@ -35,6 +35,11 @@ body{
     box-sizing: border-box;
 }
 
+.date{
+    text-align: center;
+    margin: 20px 0;
+}
+
 .Kate{
     background-color: #602e5c;
     color: white;
