@@ -11,16 +11,22 @@
     <script>
         let lastMessage = null;
         let date = null;
+        let oldDate = null;
         const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         function addZ(n){return n<10? '0'+n:''+n;}
 
+        function timeBetween(a, b){
+            var diff = Math.abs(a - b);
+            return Math.floor((diff/1000)/60);
+        }
+
         fetch('resources/Messages.json').then((response) => response.json())
         .then((json) => {
             json.forEach(element => {
-                let newDate = new Date(Date.parse(element["Time"]));               
+                let newDate = new Date(Date.parse(element["Time"]));          
                 if(!date || (newDate.getDate() != date.getDate())){
                     console.log("New day");
                     date = newDate;
@@ -39,7 +45,7 @@
                     document.getElementById("textHolder").insertBefore(dateEl, document.getElementById("message-placeholder"));
                 }
 
-                if(!lastMessage || lastMessage != element["Messager"]){
+                if(!lastMessage || lastMessage != element["Messager"] || (oldDate && timeBetween(newDate, oldDate) > 5)){
                     lastMessage = element["Messager"];
                     var timeEl = document.createElement("div");
                     timeEl.classList.add("time");
@@ -48,6 +54,7 @@
                     var timeText = document.createTextNode(addZ(newDate.getUTCHours()) + ":" + addZ(newDate.getUTCMinutes()));
                     timeEl.appendChild(timeText);
                     document.getElementById("textHolder").insertBefore(timeEl, document.getElementById("message-placeholder"));
+                    oldDate = newDate;
                 }
 
                 var newEl = document.createElement("div");
