@@ -28,7 +28,6 @@
             json.forEach(element => {
                 let newDate = new Date(Date.parse(element["Time"]));          
                 if(!date || (newDate.getDate() != date.getDate())){
-                    console.log("New day");
                     date = newDate;
 
                     var dateEl = document.createElement("div");
