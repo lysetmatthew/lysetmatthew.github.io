@@ -9,10 +9,13 @@
 </head>
 <body>
     <script>
+        let lastMessage = null;
         let date = null;
         const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        function addZ(n){return n<10? '0'+n:''+n;}
 
         fetch('resources/Messages.json').then((response) => response.json())
         .then((json) => {
@@ -34,6 +37,17 @@
                     dateEl.appendChild(dayText);
                     
                     document.getElementById("textHolder").insertBefore(dateEl, document.getElementById("message-placeholder"));
+                }
+
+                if(!lastMessage || lastMessage != element["Messager"]){
+                    lastMessage = element["Messager"];
+                    var timeEl = document.createElement("div");
+                    timeEl.classList.add("time");
+                    timeEl.classList.add("time-" + lastMessage);
+
+                    var timeText = document.createTextNode(addZ(newDate.getUTCHours()) + ":" + addZ(newDate.getUTCMinutes()));
+                    timeEl.appendChild(timeText);
+                    document.getElementById("textHolder").insertBefore(timeEl, document.getElementById("message-placeholder"));
                 }
 
                 var newEl = document.createElement("div");

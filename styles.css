@@ -28,9 +28,8 @@ body{
 
 .Kate,
 .Matthew{
-    margin: 10px 0;
+    margin: 0px 0;
     padding: 10px;
-    border-radius:10px;
     width: 90%;
     box-sizing: border-box;
 }
@@ -38,6 +37,14 @@ body{
 .date{
     text-align: center;
     margin: 20px 0;
+}
+
+.time{
+    margin-top: 15px;
+}
+
+.time.time-Kate {
+    text-align: right;
 }
 
 .Kate{

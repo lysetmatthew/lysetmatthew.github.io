@@ -11,6 +11,7 @@
 <body>
     <script>
         let date = null;
+        let lastMessage = null;
         const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -36,6 +37,10 @@
                     dateEl.appendChild(dayText);
                     
                     document.getElementById("textHolder").insertBefore(dateEl, document.getElementById("message-placeholder"));
+                }
+
+                if(!lastMessage || lastMessage != element["Messager"]){
+                    console.log("New");
                 }
 
                 console.log(element)
